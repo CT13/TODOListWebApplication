@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<script>
+    var i=1;
+    function createChk (obj ){
+        
+        if (obj.value !== "") {
+            var tao = document.querySelector('#tdate').value.length;
+            if (tao <= 0) {
+                alert("Enter the date")
+                return
+            } else {
+                document.querySelector('#chakra').innerHTML = document.querySelector('#tdate').value;
+                document.querySelector('#comp').disabled=false;
+            }
+            
+            var ul = document.createElement('ul');
+            ul.setAttribute('id', 'prod' +i);
+            var inp = document.createElement('input');
+            inp.setAttribute('id','prodName' );
+            inp.setAttribute('type','checkbox');
+            inp.setAttribute('value',obj.value);
+            inp.setAttribute('class','dummy');
+        
+            var lab = document.createElement('lable');
+            lab.setAttribute('for','prodName');
+            lab.appendChild(document.createTextNode(obj.value));
+
+            container.appendChild(ul);
+            container.appendChild(inp);
+            container.appendChild(lab);   
+            obj.value='';
+            document.getElementById(obj.id).focus();
+            i=i+1;
+        }
+    }
+
+    function dis() {
+        var val = document.querySelectorAll('.dummy');
+        for (var i=0 ; i<val.length; i++ ) {
+            if (val[i].checked === true ) {
+                val[i].disabled=true;
+            }
+        }
+    }
+</script>
+
+<h2 class="text-success"> Short TODO Tasks Lists: </h2><br>
+<p id="chakra" ></p>
+
+<p id=container> </p>
+
+<input type="button" id="comp" value="Completed" onclick="dis();" disabled><br><br>
+<label for="tdate">Pick Day:</label>
+<input type="date"  id="tdate" value="" >
+
+
+<form id="new_task" >
+    <input type="text"  autocomplete="off" autofocus placeholder="Type Here" class="ex2" id="todays" > <br><br>
+    <input  type="button"  value="Add Note" onclick="createChk(todays);">
+</form>
+
+
+
+{% endblock %}
