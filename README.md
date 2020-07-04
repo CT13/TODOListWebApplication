@@ -8,7 +8,3 @@ Usage: Copy and Paste this link in your browser or click on below link and, send
 
 http://68.183.89.86:301/
 
-
-You can find source code in my Github repository.
-
-https://github.com/CT13/TODOListWebApplication
