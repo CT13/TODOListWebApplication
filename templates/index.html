@@ -13,9 +13,8 @@
                 return
             } else {
                 document.querySelector('#chakra').innerHTML = document.querySelector('#tdate').value;
-                document.querySelector('#comp').disabled=false;
             }
-            
+            document.querySelector('#comp').disabled=true;
             var ul = document.createElement('ul');
             ul.setAttribute('id', 'prod' +i);
             var inp = document.createElement('input');
@@ -23,7 +22,8 @@
             inp.setAttribute('type','checkbox');
             inp.setAttribute('value',obj.value);
             inp.setAttribute('class','dummy');
-        
+            inp.setAttribute('onclick','comp(this);')
+           
             var lab = document.createElement('lable');
             lab.setAttribute('for','prodName');
             lab.setAttribute('id','labColor');
@@ -46,12 +46,21 @@
         for (var i=0 ; i<val.length; i++ ) {
             if (val[i].checked === true ) {
                 val[i].disabled=true;
+                //document.querySelector('#comp').disabled=false;
                 lab[i].setAttribute('style','text-decoration: line-through;color:Tomato')
                 
                 
             }
         }
     }
+
+function comp (termsCheckBox) {
+   //If the checkbox has been checked
+   if(termsCheckBox.checked) {
+        //Set the disabled property to FALSE and enable the button.
+        document.querySelector('#comp').disabled=false;
+    } 
+}
 	
 </script>
 
