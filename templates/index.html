@@ -26,6 +26,9 @@
         
             var lab = document.createElement('lable');
             lab.setAttribute('for','prodName');
+            lab.setAttribute('id','labColor');
+            lab.setAttribute('class','labClass');
+
             lab.appendChild(document.createTextNode(obj.value));
 
             container.appendChild(ul);
@@ -39,12 +42,17 @@
 
     function dis() {
         var val = document.querySelectorAll('.dummy');
+        var lab = document.querySelectorAll('.labClass');
         for (var i=0 ; i<val.length; i++ ) {
             if (val[i].checked === true ) {
                 val[i].disabled=true;
+                lab[i].setAttribute('style','text-decoration: line-through;color:Tomato')
+                
+                
             }
         }
     }
+	
 </script>
 
 <h2 class="text-success"> Short TODO Tasks Lists: </h2><br>
